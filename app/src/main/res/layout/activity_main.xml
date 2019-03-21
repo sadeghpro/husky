@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ir.sadeghpro.husky.Slider
+    <ir.sadeghpro.husky.slider.Slider
         android:id="@+id/slider"
         android:layout_width="0dp"
         android:layout_height="300dp"
@@ -14,6 +14,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </ir.sadeghpro.husky.Slider>
+    </ir.sadeghpro.husky.slider.Slider>
+
+    <ir.sadeghpro.husky.hlist.HList
+        android:id="@+id/list"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slider">
+
+    </ir.sadeghpro.husky.hlist.HList>
 
 </android.support.constraint.ConstraintLayout>
