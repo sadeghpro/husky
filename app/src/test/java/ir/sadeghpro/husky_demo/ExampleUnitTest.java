@@ -1,4 +1,4 @@
-package ir.sadeghpro.husky;
+package ir.sadeghpro.husky_demo;
 
 import org.junit.Test;
 

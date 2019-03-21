@@ -1,4 +1,4 @@
-package ir.sadeghpro.husky;
+package ir.sadeghpro.husky_demo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
