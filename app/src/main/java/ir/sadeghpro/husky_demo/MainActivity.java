@@ -6,6 +6,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
+import ir.sadeghpro.husky.hlist.AdapterHelper;
 import ir.sadeghpro.husky.hlist.HList;
 import ir.sadeghpro.husky.slider.Slider;
 import ir.sadeghpro.husky.slider.SliderModel;
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         models.add(new Model().setName("bbbb"));
         models.add(new Model().setName("ccc"));
         models.add(new Model().setName("dddd"));
-        HListAdapter adapter = new HListAdapter(this, models);
-        list.setAdapter(adapter);
+        AdapterHelper adapterHelper = new AdapterHelper(models,ViewHolder.class,R.layout.hlist_item);
+//        HListAdapter adapter = new HListAdapter(this, models);
+        list.setAdapter(adapterHelper);
     }
 }
