@@ -45,22 +45,34 @@ public class NumberSpinner extends LinearLayout {
         setGravity(Gravity.CENTER);
 
         //<editor-fold desc="Color setup">
-        int[][] states = new int[][] {
+        int[][] backgroundStates = new int[][] {
                 new int[] { android.R.attr.state_enabled}, // enabled
                 new int[] {-android.R.attr.state_enabled}, // disabled
         };
 
-        int[] colors = new int[] {
+        int[] backgroundColors = new int[] {
                 res.getColor(R.color.btnAddBackground),
                 res.getColor(R.color.btnAddBackgroundDisable)
         };
 
-        ColorStateList myList = new ColorStateList(states, colors);
+        ColorStateList background = new ColorStateList(backgroundStates, backgroundColors);
+
+        int[][] iconStates = new int[][] {
+                new int[] { android.R.attr.state_enabled}, // enabled
+                new int[] {-android.R.attr.state_enabled}, // disabled
+        };
+
+        int[] iconColors = new int[] {
+                res.getColor(R.color.btnAddIconTint),
+                res.getColor(R.color.btnAddBackgroundDisable)
+        };
+
+        ColorStateList icon = new ColorStateList(iconStates, iconColors);
         //</editor-fold>
 
         //<editor-fold desc="LayoutParams">
         LayoutParams btnParams = new LayoutParams(res.getDimensionPixelOffset(R.dimen.btnWidth), res.getDimensionPixelOffset(R.dimen.btnHeight));
-        LayoutParams txtParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, res.getDimensionPixelOffset(R.dimen.btnHeight), 1);
+        LayoutParams txtParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         //</editor-fold>
 
         //<editor-fold desc="Button sub settings">
@@ -69,9 +81,8 @@ public class NumberSpinner extends LinearLayout {
         btnSub.setIconGravity(MaterialButton.ICON_GRAVITY_TEXT_START);
         btnSub.setIconPadding(0);
         btnSub.setCornerRadius(0);
-        btnSub.setIconTintResource(R.color.btnAddIconTint);
-        btnSub.setBackgroundTintMode(PorterDuff.Mode.DARKEN);
-        btnSub.setBackgroundTintList(myList);
+        btnSub.setIconTint(icon);
+        btnSub.setBackgroundTintList(background);
         btnSub.setIconSize(res.getDimensionPixelSize(R.dimen.btnIconSize));
         btnSub.setLayoutParams(btnParams);
         btnSub.setEnabled(false);
@@ -92,8 +103,8 @@ public class NumberSpinner extends LinearLayout {
         btnAdd.setIconGravity(MaterialButton.ICON_GRAVITY_TEXT_START);
         btnAdd.setIconPadding(0);
         btnAdd.setCornerRadius(0);
-        btnAdd.setIconTintResource(R.color.btnAddIconTint);
-        btnAdd.setBackgroundTintList(myList);
+        btnAdd.setIconTint(icon);
+        btnAdd.setBackgroundTintList(background);
         btnAdd.setIconSize(res.getDimensionPixelSize(R.dimen.btnIconSize));
         btnAdd.setLayoutParams(btnParams);
         //</editor-fold>
@@ -129,5 +140,9 @@ public class NumberSpinner extends LinearLayout {
             }
         });
         //</editor-fold>
+    }
+
+    public int getNumber() {
+        return number;
     }
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="btnAddIconTint">#ffffff</color>
+    <color name="btnAddIconTintDisable">#52FFFFFF</color>
     <color name="btnAddBackground">#263238</color>
-    <color name="btnAddBackgroundDisable">#6C7D86</color>
+    <color name="btnAddBackgroundDisable">#52263238</color>
     <color name="txtNumber">#2C393F</color>
 </resources>
