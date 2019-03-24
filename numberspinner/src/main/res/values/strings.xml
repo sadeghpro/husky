@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">numberspinner</string>
+    <string name="defaultNumber">1</string>
+</resources>

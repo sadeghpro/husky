@@ -1,1 +1,1 @@
-include ':app', ':slider', ':hlist'
+include ':app', ':slider', ':hlist', ':numberspinner'
