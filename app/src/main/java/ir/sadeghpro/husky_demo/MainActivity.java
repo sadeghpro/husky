@@ -2,15 +2,19 @@ package ir.sadeghpro.husky_demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ir.sadeghpro.husky.hlist.AdapterHelper;
+import ir.sadeghpro.husky.hlist.HListAdapterHelper;
 import ir.sadeghpro.husky.hlist.HList;
 import ir.sadeghpro.husky.slider.Slider;
 import ir.sadeghpro.husky.slider.SliderModel;
 import ir.sadeghpro.husky.slider.model.SimpleModel;
+import ir.sadeghpro.husky.vlist.VList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,8 +36,25 @@ public class MainActivity extends AppCompatActivity {
         models.add(new Model().setName("bbbb"));
         models.add(new Model().setName("ccc"));
         models.add(new Model().setName("dddd"));
-        AdapterHelper adapterHelper = new AdapterHelper(models,ViewHolder.class,R.layout.hlist_item);
+        HListAdapterHelper HListAdapterHelper = new HListAdapterHelper(models, HListViewHolder.class,R.layout.hlist_item);
 //        HListAdapter adapter = new HListAdapter(this, models);
-        list.setAdapter(adapterHelper);
+        list.setAdapter(HListAdapterHelper);
+        VList vList = findViewById(R.id.vlist);
+        vList.setCellCount(4);
+        ArrayList<String> data = new ArrayList<>();
+        data.add("1");
+        data.add("2");
+        data.add("3");
+        data.add("4");
+        data.add("5");
+        data.add("6");
+        VListAdapter adapter = new VListAdapter(this,data,R.layout.vlist_item);
+        vList.setAdapter(adapter);
+        vList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("HuskyLog", position+ " : " + id);
+            }
+        });
     }
 }

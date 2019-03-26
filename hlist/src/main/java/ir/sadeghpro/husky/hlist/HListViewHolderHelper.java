@@ -4,9 +4,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-public abstract class ViewHolderHelper<T> extends RecyclerView.ViewHolder {
+public abstract class HListViewHolderHelper<T> extends RecyclerView.ViewHolder {
 
-    public ViewHolderHelper(@NonNull View itemView) {
+    public HListViewHolderHelper(@NonNull View itemView) {
         super(itemView);
     }
 

@@ -10,13 +10,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterHelper<T> extends RecyclerView.Adapter<ViewHolderHelper> {
+public class HListAdapterHelper<T> extends RecyclerView.Adapter<HListViewHolderHelper> {
     private List<T> models;
-    private Class<? extends ViewHolderHelper<T>> viewHolder;
+    private Class<? extends HListViewHolderHelper<T>> viewHolder;
     private int layoutResource;
 
 
-    public AdapterHelper(ArrayList<T> models, Class<? extends ViewHolderHelper<T>> viewHolder, int layoutResource) {
+    public HListAdapterHelper(ArrayList<T> models, Class<? extends HListViewHolderHelper<T>> viewHolder, int layoutResource) {
         this.models = models;
         this.viewHolder = viewHolder;
         this.layoutResource = layoutResource;
@@ -25,7 +25,7 @@ public class AdapterHelper<T> extends RecyclerView.Adapter<ViewHolderHelper> {
 
     @NonNull
     @Override
-    public ViewHolderHelper onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public HListViewHolderHelper onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         try {
             View view = LayoutInflater.from(parent.getContext()).inflate(layoutResource, parent, false);
             return viewHolder.getDeclaredConstructor(View.class).newInstance(view);
@@ -42,7 +42,7 @@ public class AdapterHelper<T> extends RecyclerView.Adapter<ViewHolderHelper> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderHelper viewHolder, int position) {
+    public void onBindViewHolder(@NonNull HListViewHolderHelper viewHolder, int position) {
         viewHolder.bindModel(models.get(position));
     }
 

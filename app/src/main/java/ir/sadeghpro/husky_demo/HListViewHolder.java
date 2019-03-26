@@ -3,13 +3,13 @@ package ir.sadeghpro.husky_demo;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
-import ir.sadeghpro.husky.hlist.ViewHolderHelper;
+import ir.sadeghpro.husky.hlist.HListViewHolderHelper;
 
-public class ViewHolder extends ViewHolderHelper<Model> {
+public class HListViewHolder extends HListViewHolderHelper<Model> {
 
     private TextView txt;
 
-    public ViewHolder(@NonNull View itemView) {
+    public HListViewHolder(@NonNull View itemView) {
         super(itemView);
         txt = itemView.findViewById(R.id.name);
     }
