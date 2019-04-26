@@ -3,9 +3,10 @@ package ir.sadeghpro.husky.slider;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import ir.sadeghpro.husky.R;
 public class Slider extends ConstraintLayout {
     private Context context;
     ViewPager pager;
-    TabLayout indicator;
+    WormDotsIndicator indicator;
 
     public Slider(Context context) {
         super(context);
@@ -37,10 +38,9 @@ public class Slider extends ConstraintLayout {
         //<editor-fold desc="Create and add views to ConstraintLayout">
         pager = new ViewPager(context);
         pager.setId(R.id.pager);
-        indicator = new TabLayout(context);
+        indicator = new WormDotsIndicator(context);
         indicator.setId(R.id.indicator);
-        indicator.setTabGravity(TabLayout.GRAVITY_CENTER);
-        indicator.setupWithViewPager(pager);
+        indicator.setViewPager(pager);
         addView(pager);
         addView(indicator);
         //</editor-fold>
