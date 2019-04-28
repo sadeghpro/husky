@@ -15,10 +15,12 @@ public class SliderAdapter extends PagerAdapter {
 
     private List<SliderModel> modelList;
     private Context context;
+    private Slider slider;
 
-    public SliderAdapter(Context context, List<SliderModel> modelList) {
+    public SliderAdapter(Context context, List<SliderModel> modelList, Slider slider) {
         this.context = context;
         this.modelList = modelList;
+        this.slider = slider;
     }
 
     @Override
@@ -38,6 +40,9 @@ public class SliderAdapter extends PagerAdapter {
         SliderModel model = modelList.get(position);
         Glide.with(context).load(model.getImageUrl()).centerCrop().into(image);
         container.addView(image);
+        if(slider.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+            image.setRotationY(180);
+        }
         return image;
     }
 
