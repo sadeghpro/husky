@@ -11,6 +11,7 @@ import java.util.List;
 
 import ir.sadeghpro.husky.hlist.HListAdapterHelper;
 import ir.sadeghpro.husky.hlist.HList;
+import ir.sadeghpro.husky.hlist.OnItemClickListener;
 import ir.sadeghpro.husky.slider.Slider;
 import ir.sadeghpro.husky.slider.SliderModel;
 import ir.sadeghpro.husky.slider.model.SimpleModel;
@@ -36,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         models.add(new Model().setName("bbbb"));
         models.add(new Model().setName("ccc"));
         models.add(new Model().setName("dddd"));
+        list.setOnItemClickListener(new OnItemClickListener( new  OnItemClickListener.OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                // TODO Handle item click
+                Log.e("@@@@@",""+position);
+            }
+        }));
         HListAdapterHelper HListAdapterHelper = new HListAdapterHelper(models, HListViewHolder.class,R.layout.hlist_item);
 //        HListAdapter adapter = new HListAdapter(this, models);
         list.setAdapter(HListAdapterHelper);
