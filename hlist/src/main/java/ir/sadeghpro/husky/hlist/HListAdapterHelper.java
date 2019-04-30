@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HListAdapterHelper<T> extends RecyclerView.Adapter<HListViewHolderHelper> {
@@ -16,7 +15,7 @@ public class HListAdapterHelper<T> extends RecyclerView.Adapter<HListViewHolderH
     private int layoutResource;
 
 
-    public HListAdapterHelper(ArrayList<T> models, Class<? extends HListViewHolderHelper<T>> viewHolder, int layoutResource) {
+    public HListAdapterHelper(List<T> models, Class<? extends HListViewHolderHelper<T>> viewHolder, int layoutResource) {
         this.models = models;
         this.viewHolder = viewHolder;
         this.layoutResource = layoutResource;

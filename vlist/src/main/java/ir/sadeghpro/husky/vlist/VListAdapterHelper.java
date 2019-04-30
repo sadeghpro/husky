@@ -6,11 +6,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public abstract class VListAdapterHelper<T> extends ArrayAdapter<T> {
 
@@ -24,7 +23,7 @@ public abstract class VListAdapterHelper<T> extends ArrayAdapter<T> {
     );
     private int layoutResource;
 
-    public VListAdapterHelper(Context context, ArrayList<T> data, int layoutResource) {
+    public VListAdapterHelper(Context context, List<T> data, int layoutResource) {
         super(context, 0, data);
         this.context = context;
         this.layoutResource = layoutResource;
@@ -48,19 +47,19 @@ public abstract class VListAdapterHelper<T> extends ArrayAdapter<T> {
             }
             convertView = row;
         }
-        for (int i = 0; i < ((LinearLayout)convertView).getChildCount(); i++) {
+        for (int i = 0; i < ((LinearLayout) convertView).getChildCount(); i++) {
             final int finalPosition = (position * cellCount) + i;
-            View v = ((LinearLayout)convertView).getChildAt(i);
+            View v = ((LinearLayout) convertView).getChildAt(i);
             if (finalPosition >= count) {
                 v.setVisibility(View.INVISIBLE);
             } else {
                 v.setVisibility(View.VISIBLE);
-                bindModel(finalPosition,v,getItem(finalPosition));
+                bindModel(finalPosition, v, getItem(finalPosition));
                 v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         VList list = (VList) parent;
-                        list.getOnItemVListClickListener().onItemClick(list,v,finalPosition,position);
+                        list.getOnItemVListClickListener().onItemClick(list, v, finalPosition, position);
                     }
                 });
             }
