@@ -8,12 +8,12 @@
 
     <com.tbuonomo.materialsquareloading.MaterialSquareLoading
         android:id="@+id/material_square_loading_view"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:innerColor="@color/colorAccent"
-        app:innerRadius="8dp"
+        app:innerRadius="4dp"
         app:outerColor="@color/colorPrimary"
-        app:outerRadius="8dp"
+        app:outerRadius="4dp"
         app:rotationInnerDuration="6423"
         app:rotationOuterDuration="9850" />
 </LinearLayout>

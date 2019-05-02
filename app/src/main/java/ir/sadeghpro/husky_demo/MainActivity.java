@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         data.add("5");
         data.add("6");
         vList.addHeaderView(new TextView(this));
-        vList.setOnLastItemVisible(new VList.OnLastItemVisible() {
+        vList.setOnLastItemVisible(true, VList.LoadingType.SQUARE,new VList.OnLastItemVisible() {
             @Override
             public void lastItemVisible() {
                 try {

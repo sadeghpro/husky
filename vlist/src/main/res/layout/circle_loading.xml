@@ -8,9 +8,9 @@
 
     <com.tbuonomo.circleloading.CircleLoading
         android:id="@+id/material_circle_loading_view"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="12dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="15dp"
         app:animationDuration="700"
         app:innerAlpha="255"
         app:innerColor="@color/colorAccent"
