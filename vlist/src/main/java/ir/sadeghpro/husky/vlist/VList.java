@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -111,7 +112,7 @@ public class VList extends ListView {
                                     if (enableLoading) {
                                         removeFooterView(finalLoadingView);
                                     }
-                                    ((VListAdapterHelper) getAdapter()).notifyDataSetChanged();
+                                    ((ArrayAdapter) getAdapter()).notifyDataSetChanged();
                                 }
                             });
                         }
