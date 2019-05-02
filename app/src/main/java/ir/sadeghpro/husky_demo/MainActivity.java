@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         data.add("4");
         data.add("5");
         data.add("6");
+        vList.addHeaderView(new TextView(this));
         vList.setOnLastItemVisible(new VList.OnLastItemVisible() {
             @Override
             public void lastItemVisible() {

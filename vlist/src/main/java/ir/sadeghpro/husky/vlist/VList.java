@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -45,7 +46,11 @@ public class VList extends ListView {
         if (adapter instanceof VListAdapterHelper) {
             super.setAdapter(adapter);
             if (cellCount != 0) {
-                ((VListAdapterHelper) getAdapter()).setCellCount(cellCount);
+                if(getAdapter() instanceof VListAdapterHelper){
+                    ((VListAdapterHelper) getAdapter()).setCellCount(cellCount);
+                } else if (getAdapter() instanceof HeaderViewListAdapter) {
+                    ((VListAdapterHelper) ((HeaderViewListAdapter) getAdapter()).getWrappedAdapter()).setCellCount(cellCount);
+                }
             }
         } else {
             throw new IllegalArgumentException("Adapter must be instance of VListAdapterHelper");
@@ -112,7 +117,11 @@ public class VList extends ListView {
                                     if (enableLoading) {
                                         removeFooterView(finalLoadingView);
                                     }
-                                    ((ArrayAdapter) getAdapter()).notifyDataSetChanged();
+                                    if (getAdapter() instanceof ArrayAdapter) {
+                                        ((ArrayAdapter) getAdapter()).notifyDataSetChanged();
+                                    } else if (getAdapter() instanceof HeaderViewListAdapter) {
+                                        ((ArrayAdapter) ((HeaderViewListAdapter) getAdapter()).getWrappedAdapter()).notifyDataSetChanged();
+                                    }
                                 }
                             });
                         }
