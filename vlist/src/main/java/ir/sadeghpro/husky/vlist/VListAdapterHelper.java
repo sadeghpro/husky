@@ -47,7 +47,7 @@ public abstract class VListAdapterHelper<T> extends ArrayAdapter<T> {
             }
             convertView = row;
         }
-        for (int i = 0; i < ((LinearLayout) convertView).getChildCount(); i++) {
+        for (int i = 0; i < cellCount; i++) {
             final int finalPosition = (position * cellCount) + i;
             View v = ((LinearLayout) convertView).getChildAt(i);
             if (finalPosition >= count) {

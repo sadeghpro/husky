@@ -48,14 +48,30 @@ public class MainActivity extends AppCompatActivity {
 //        HListAdapter adapter = new HListAdapter(this, models);
         list.setAdapter(HListAdapterHelper);
         VList vList = findViewById(R.id.vlist);
-        vList.setCellCount(4);
-        ArrayList<String> data = new ArrayList<>();
+        vList.setCellCount(1);
+        final ArrayList<String> data = new ArrayList<>();
         data.add("1");
         data.add("2");
         data.add("3");
         data.add("4");
         data.add("5");
         data.add("6");
+        vList.setOnLastItemVisible(new VList.OnLastItemVisible() {
+            @Override
+            public void lastItemVisible() {
+                try {
+                    Thread.sleep(2000);
+                    data.add("7");
+                    data.add("8");
+                    data.add("9");
+                    data.add("10");
+                    data.add("11");
+                    data.add("12");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         VListAdapter adapter = new VListAdapter(this,data,R.layout.vlist_item);
         vList.setAdapter(adapter);
         vList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

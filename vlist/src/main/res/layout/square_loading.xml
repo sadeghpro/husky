@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.tbuonomo.materialsquareloading.MaterialSquareLoading
+        android:id="@+id/material_square_loading_view"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:innerColor="@color/colorAccent"
+        app:innerRadius="8dp"
+        app:outerColor="@color/colorPrimary"
+        app:outerRadius="8dp"
+        app:rotationInnerDuration="6423"
+        app:rotationOuterDuration="9850" />
+</LinearLayout>
