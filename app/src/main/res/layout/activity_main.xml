@@ -9,7 +9,7 @@
     <ir.sadeghpro.husky.slider.Slider
         android:id="@+id/slider"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
