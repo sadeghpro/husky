@@ -119,6 +119,7 @@ public class Slider extends ConstraintLayout {
                                 }
                             });
                         }
+                        thread = null;
                     }
                 });
                 thread.start();
