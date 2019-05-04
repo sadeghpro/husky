@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
+import java.util.Collections;
 import java.util.List;
 
 import ir.sadeghpro.husky.R;
@@ -21,6 +22,7 @@ public class Slider extends ConstraintLayout {
     private int interval = 4000;
     private boolean autoPlay = false;
     private int position = 0;
+    private List<SliderModel> modelList;
 
     public Slider(Context context) {
         super(context);
@@ -68,11 +70,12 @@ public class Slider extends ConstraintLayout {
             @Override
             public void run() {
                 if (getLayoutDirection() == LAYOUT_DIRECTION_RTL) {
-                    pager.setRotationY(180);
-                    indicator.setRotationY(180);
-                    if (position < 0 && pager.getAdapter() != null) {
+                    if (pager.getAdapter() != null && pager.getAdapter().getCount() > 0) {
+                        Collections.reverse(modelList);
+                        SliderAdapter adapter = new SliderAdapter(getContext(), modelList, Slider.this);
+                        pager.setAdapter(adapter);
                         position = pager.getAdapter().getCount() - 1;
-                        pager.setCurrentItem(position);
+                        pager.setCurrentItem(position, false);
                     }
                 }
             }
@@ -81,8 +84,11 @@ public class Slider extends ConstraintLayout {
 
         //<editor-fold desc="Set change listener to set position for when auto play is enable">
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            public void onPageScrollStateChanged(int state) {}
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrollStateChanged(int state) {
+            }
+
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             public void onPageSelected(int pos) {
                 position = pos;
@@ -106,10 +112,17 @@ public class Slider extends ConstraintLayout {
                                 e.printStackTrace();
                             }
                             if (pager.getAdapter() != null) {
-                                int count = pager.getAdapter().getCount();
-                                position++;
-                                if (position >= count) {
-                                    position = 0;
+                                if (getLayoutDirection() == LAYOUT_DIRECTION_RTL) {
+                                    position--;
+                                    if (position < 0) {
+                                        position = pager.getAdapter().getCount() - 1;
+                                    }
+                                } else {
+                                    int count = pager.getAdapter().getCount();
+                                    position++;
+                                    if (position >= count) {
+                                        position = 0;
+                                    }
                                 }
                             }
                             ((Activity) context).runOnUiThread(new Runnable() {
@@ -141,15 +154,16 @@ public class Slider extends ConstraintLayout {
         this.interval = interval;
     }
 
-    public void setDotIndicatorColor(int color){
+    public void setDotIndicatorColor(int color) {
         indicator.setDotIndicatorColor(color);
     }
 
-    public void setStrokeDotsIndicatorColor(int color){
+    public void setStrokeDotsIndicatorColor(int color) {
         indicator.setStrokeDotsIndicatorColor(color);
     }
 
     public Slider setModel(List<SliderModel> modelList) {
+        this.modelList = modelList;
         SliderAdapter adapter = new SliderAdapter(context, modelList, this);
         pager.setAdapter(adapter);
         return this;
