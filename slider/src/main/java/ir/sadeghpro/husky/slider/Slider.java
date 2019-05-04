@@ -2,6 +2,7 @@ package ir.sadeghpro.husky.slider;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v4.view.ViewPager;
@@ -26,22 +27,28 @@ public class Slider extends ConstraintLayout {
 
     public Slider(Context context) {
         super(context);
-        init(context);
+        init(context, null);
     }
 
     public Slider(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init(context, attrs);
     }
 
     public Slider(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        init(context, attrs);
     }
 
-    public void init(Context context) {
+    public void init(Context context, AttributeSet attrs) {
         this.context = context;
-
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.Slider, 0, 0);
+        try {
+            autoPlay = a.getBoolean(R.styleable.Slider_autoPlay, false);
+        } finally {
+            a.recycle();
+        }
+        setAutoPlay(autoPlay);
         //<editor-fold desc="Create and add views to ConstraintLayout">
         pager = new ViewPager(context);
         pager.setId(R.id.pager);
@@ -105,7 +112,6 @@ public class Slider extends ConstraintLayout {
                     @Override
                     public void run() {
                         while (autoPlay) {
-                            System.out.println(System.currentTimeMillis());
                             try {
                                 Thread.sleep(interval);
                             } catch (InterruptedException e) {
