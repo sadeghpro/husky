@@ -43,8 +43,12 @@ public class Slider extends ConstraintLayout {
     public void init(Context context, AttributeSet attrs) {
         this.context = context;
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.Slider, 0, 0);
+        final int indicatorColor;
+        final int strokeIndicatorColor;
         try {
             autoPlay = a.getBoolean(R.styleable.Slider_autoPlay, false);
+            indicatorColor = a.getColor(R.styleable.Slider_indicatorColor, -16743049);
+            strokeIndicatorColor = a.getColor(R.styleable.Slider_strokeIndicatorColor, -16743049);
         } finally {
             a.recycle();
         }
@@ -76,6 +80,8 @@ public class Slider extends ConstraintLayout {
         post(new Runnable() {
             @Override
             public void run() {
+                indicator.setDotIndicatorColor(indicatorColor);
+                indicator.setStrokeDotsIndicatorColor(strokeIndicatorColor);
                 if (getLayoutDirection() == LAYOUT_DIRECTION_RTL) {
                     if (pager.getAdapter() != null && pager.getAdapter().getCount() > 0) {
                         Collections.reverse(modelList);

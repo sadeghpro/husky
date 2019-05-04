@@ -2,5 +2,7 @@
 <resources>
     <declare-styleable name="Slider">
         <attr name="autoPlay" format="boolean" />
+        <attr name="indicatorColor" format="color">@color/colorPrimary</attr>
+        <attr name="strokeIndicatorColor" format="color">@color/colorPrimary</attr>
     </declare-styleable>
 </resources>
