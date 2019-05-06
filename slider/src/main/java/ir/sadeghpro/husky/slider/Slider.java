@@ -1,6 +1,5 @@
 package ir.sadeghpro.husky.slider;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.constraint.ConstraintLayout;
@@ -85,7 +84,7 @@ public class Slider extends ConstraintLayout {
                 if (getLayoutDirection() == LAYOUT_DIRECTION_RTL) {
                     if (pager.getAdapter() != null && pager.getAdapter().getCount() > 0) {
                         Collections.reverse(modelList);
-                        SliderAdapter adapter = new SliderAdapter(getContext(), modelList, Slider.this);
+                        SliderAdapter adapter = new SliderAdapter(getContext(), modelList);
                         pager.setAdapter(adapter);
                         position = pager.getAdapter().getCount() - 1;
                         pager.setCurrentItem(position, false);
@@ -176,7 +175,7 @@ public class Slider extends ConstraintLayout {
 
     public Slider setModel(List<SliderModel> modelList) {
         this.modelList = modelList;
-        SliderAdapter adapter = new SliderAdapter(context, modelList, this);
+        SliderAdapter adapter = new SliderAdapter(context, modelList);
         pager.setAdapter(adapter);
         return this;
     }
