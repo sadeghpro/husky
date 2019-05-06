@@ -137,7 +137,7 @@ public class Slider extends ConstraintLayout {
                                     }
                                 }
                             }
-                            ((Activity) context).runOnUiThread(new Runnable() {
+                            pager.post(new Runnable() {
                                 @Override
                                 public void run() {
                                     pager.setCurrentItem(position, true);
