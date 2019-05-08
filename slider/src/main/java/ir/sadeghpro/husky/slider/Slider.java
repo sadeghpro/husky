@@ -58,6 +58,7 @@ public class Slider extends ConstraintLayout {
         indicator = new WormDotsIndicator(context);
         indicator.setId(R.id.indicator);
         indicator.setViewPager(pager);
+        indicator.setLayoutDirection(LAYOUT_DIRECTION_LTR);
         addView(pager);
         addView(indicator);
         //</editor-fold>
